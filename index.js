@@ -7,6 +7,10 @@ const exp = require("constants");
 const app = express();
 const port = 4500 || process.env.PORT; // if hosting online, selects the given port
 
+app.get("/" , (req,res)=> {
+    res.send("Hello, its working!");
+})
+
 // creating a server
 const server = http.createServer(app);
 
@@ -15,5 +19,5 @@ const io = socketIO(server);
 
 // establishing port
 server.listen(port, ()=> {
-    console.log(`server is working on ${port}`);
+    console.log(`server is working on http://localhost:${port}`);
 })
