@@ -7,6 +7,8 @@ const exp = require("constants");
 const app = express();
 const port = 4500 || process.env.PORT; // if hosting online, selects the given port
 
+// cors : used for inter communication btw URL
+app.use(cors());
 app.get("/" , (req,res)=> {
     res.send("Hello, its working!");
 })
