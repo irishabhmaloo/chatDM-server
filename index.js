@@ -17,6 +17,11 @@ const server = http.createServer(app);
 // creating circuit | connection
 const io = socketIO(server);
 
+// when connection is established
+io.on("connection" , ()=>{
+    console.log("New Connnection");
+})
+
 // establishing port
 server.listen(port, ()=> {
     console.log(`server is working on http://localhost:${port}`);
