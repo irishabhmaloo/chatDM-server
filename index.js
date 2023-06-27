@@ -20,8 +20,12 @@ const server = http.createServer(app);
 const io = socketIO(server);
 
 // when connection is established
-io.on("connection" , ()=>{
+io.on("connection" , (socket)=>{
     console.log("New Connnection");
+
+    socket.on('joined', ({user}) => {
+        console.log(`${user} has joined`);
+    })
 })
 
 // establishing port
