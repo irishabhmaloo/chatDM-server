@@ -37,6 +37,12 @@ io.on("connection" , (socket)=>{
         socket.broadcast.emit('userJoined',  {user:"Admin", message: `${users[socket.id]} has joined`});
     });
 
+    // chat
+    socket.on('message' , ({message, id}) => {
+        //sending to whole circuit
+        io.emit('sendMessage', {user: users[socket.id], message, id});
+    });
+
     socket.on('userDisconnect', () => {
         console.log(`${users[socket.io]} left`);
         socket.broadcast.emit('userLeft',  {user:"Admin", message: `${users[socket.id]} left`});
